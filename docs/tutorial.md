@@ -61,19 +61,19 @@ tracker](https://github.com/addok/addok/issues) to ask for help.
 
 And paste this configuration:
 ```
-QUERY_PROCESSORS = [
+QUERY_PROCESSORS_PATHS = [
     "addok_france.extract_address",
     "addok_france.clean_query",
     "addok_france.remove_leading_zeros",
     "addok_france.glue_ordinal",
     "addok_france.fold_ordinal",
 ]
-HOUSENUMBER_PROCESSORS = [
+HOUSENUMBER_PROCESSORS_PATHS = [
     "addok_france.remove_leading_zeros",
     "addok_france.glue_ordinal",
     "addok_france.fold_ordinal",
 ]
-SEARCH_RESULT_PROCESSORS = [
+SEARCH_RESULT_PROCESSORS_PATHS = [
     "addok.helpers.results.match_housenumber",
     "addok_france.make_labels",
     "addok.helpers.results.score_by_importance",
@@ -81,7 +81,7 @@ SEARCH_RESULT_PROCESSORS = [
     "addok.helpers.results.score_by_ngram_distance",
     "addok.helpers.results.score_by_geo_distance",
 ]
-PROCESSORS = [
+PROCESSORS_PATHS = [
     "addok.helpers.text.tokenize",
     "addok.helpers.text.normalize",
     "addok.helpers.text.synonymize",
