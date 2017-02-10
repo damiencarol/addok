@@ -1,3 +1,5 @@
+from addok.db import DB
+
 from addok.helpers import scripts
 
 
@@ -28,3 +30,12 @@ def test_zinter(factory):
     assert results == ['d|{}'.format(docs[2]['id']).encode(),
                        'd|{}'.format(docs[3]['id']).encode(),
                        'd|{}'.format(docs[0]['id']).encode()]
+
+
+def test_delete(factory):
+    factory(name="rue de la monnaie", city="Vitry", id='1234')
+    assert DB.exists('d|1234')
+    assert DB.exists('w|rue')
+    scripts.delete(args=['d|*'])
+    assert DB.exists('w|rue')
+    assert not DB.exists('d|1234')

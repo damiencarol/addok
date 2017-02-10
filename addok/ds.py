@@ -1,6 +1,6 @@
 from addok.config import config
 from addok.db import DB
-from addok.helpers import keys
+from addok.helpers import keys, scripts
 
 
 class RedisStore:
@@ -24,6 +24,9 @@ class RedisStore:
         for key in keys:
             pipe.delete(key)
         pipe.execute()
+
+    def flush(self):
+        scripts.delete(args=['d|*'])
 
 
 class DSProxy:
