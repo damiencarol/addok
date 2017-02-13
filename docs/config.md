@@ -34,6 +34,39 @@ Defines the Redis database settings:
         'db': 0
     }
 
+By default, when using the `RedisStore` for documents, indexes and documents
+will be stored in two differents Redis databases.
+You can control those details too, by using `indexes` and/or `documents`
+subdictionnaries, for example:
+
+    REDIS = {
+        'host': 'myhost',
+        'port': 6379,
+        'indexes': {
+            'db': 11,
+        },
+        'documents': {
+            'db': 12,
+        }
+    }
+
+If your even your hosts are different, you can define them too:
+
+    REDIS = {
+        'port': 6379,
+        'indexes': {
+            'host': 'myhost1',
+            'db': 11,
+        },
+        'documents': {
+            'db': 12,
+            'host': 'myhost2',
+        }
+    }
+
+And of course, same for the port.
+
+
 #### LOG_DIR (path)
 Path to the directory Addok will write its log and history files. Can also
 be overriden from the environment variable `ADDOK_LOG_DIR`.
